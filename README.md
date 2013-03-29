@@ -12,3 +12,7 @@ an inference method to query my knowledge base using the
 version of the wumpus world game implemented with Lisp in the 
 <a href="http://www.gnu.org/software/emacs/" target="_blank"><font color="#ff45002"><b>GNU Emacs</b></font></a> 
 IDE.
+
+<br>
+
+More details here: <a href="http://babaawumbila.com/baba/?q=projects/wumpus-world" target="_blank" >babaawumbila.com/baba/?q=projects/wumpus-world</a>
