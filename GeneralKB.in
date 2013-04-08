@@ -1,0 +1,69 @@
+%%% ==========================================
+%%%   ABUBAKAR AWUMBILA
+%%%   WUMUPS WORLD PROJECT - KNOWLEDGE BASE FILE (GENERAL )
+%%%   FILE:    General KB.in
+%%% ==========================================
+
+%% This is teh initial knowledge base
+
+%% You may modify max_seconds and/or max_mem while testing
+
+set(binary_res).
+clear(print_kept).
+clear(print_back_sub).
+assign(max_mem, 2048).  
+assign(max_seconds, 5). 
+set(free_all_mem).
+
+formula_list(sos).
+
+
+
+%% A rule that specifies what it means for a list of objects
+%% to be DISTINCT.  (Uses the built-in LIST notation.)
+
+all xFirst xSecond xRest (distinct([xFirst,xSecond | xRest]) ->
+  ( (xFirst != xSecond)
+    & distinct([xFirst | xRest])
+    & distinct([xSecond | xRest]))).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                          SENTENCES      						   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  1.	If there is no stench or pit in a room, you can go into any adjacent room
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Room(x,y) -> There exists a rioom on the grid with coordinates (x,y)
+%	CurrentPos(x,y) -> Agents Current position
+%	Breeze(x,y) -> There is breeze at coordinates (x,y)
+%	Stench(x,y) -> There is stench at coordinates (x,y)
+%	CanGoRight/Left/Up/Down(x,y) -> You can go in given direction from room(x,y)
+%	CanGo(x,y) -. It is safe to visit room (x,y)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+
+all x y ((CurrentPos(x,y)) & ((-Stench(x,y)) & (-Breeze(x,y))) -> CanGoRight(x,y) & CanGoLeft(x,y) & CanGoUp(x,y) & CanGoDown(x,y)).
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  2.	If you have visited a room you can go into that room
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+
+all x y ((CurrentPos(x,y)) -> Room(x,y) & HasVisited(x,y)).
+
+all x y ((HasVisited(x,y)) -> CanGo(x,y)).
+
+
+
+
+
+
+

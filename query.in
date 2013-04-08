@@ -1,0 +1,22 @@
+%%% ==========================================
+%%%   ABUBAKAR AWUMBILA
+%%%   WUMUPS WORLD PROJECT - Query File
+%%%   FILE:    query.in
+%%% ==========================================
+
+
+%%% ROOM INFORMATION
+
+CurrentPos(4,3).
+-Stench(4,3).
+Breeze(4,3).
+
+
+
+%%%    NEGATED QUERY
+
+-(exists x y ((CanGoRight(x,y)) & $ans(x,y))).
+
+
+
+end_of_list.

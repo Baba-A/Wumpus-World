@@ -1,0 +1,885 @@
+----- Otter 3.0.4, August 1995 -----
+The job was started by abawumbila on cs206, Tue Dec 14 01:45:19 2010
+The command was "/home/cs365/bin/otter".
+
+set(binary_res).
+   dependent: set(factor).
+   dependent: set(unit_deletion).
+clear(print_kept).
+clear(print_back_sub).
+assign(max_mem,2048).
+assign(max_seconds,5).
+set(free_all_mem).
+
+formula_list(sos).
+all xFirst xSecond xRest (distinct([xFirst,xSecond|xRest])->xFirst!=xSecond&distinct([xFirst|xRest])&distinct([xSecond|xRest])).
+all x y (CurrentPos(x,y)& -Stench(x,y)& -Breeze(x,y)->CanGoRight(x,y)&CanGoLeft(x,y)&CanGoUp(x,y)&CanGoDown(x,y)).
+all x y (CurrentPos(x,y)->Room(x,y)&HasVisited(x,y)).
+all x y (HasVisited(x,y)->CanGo(x,y)).
+HasVisited(0,0).
+-Stench(0,0).
+-Breeze(0,0).
+-Glitter(0,0).
+HasVisited(0,1).
+-Stench(0,1).
+-Breeze(0,1).
+-Glitter(0,1).
+HasVisited(0,2).
+-Stench(0,2).
+Breeze(0,2).
+-Glitter(0,2).
+HasVisited(0,1).
+-Stench(0,1).
+-Breeze(0,1).
+-Glitter(0,1).
+HasVisited(1,1).
+-Stench(1,1).
+Breeze(1,1).
+-Glitter(1,1).
+HasVisited(0,1).
+-Stench(0,1).
+-Breeze(0,1).
+-Glitter(0,1).
+HasVisited(0,0).
+-Stench(0,0).
+-Breeze(0,0).
+-Glitter(0,0).
+HasVisited(1,0).
+-Stench(1,0).
+-Breeze(1,0).
+-Glitter(1,0).
+HasVisited(2,0).
+-Stench(2,0).
+-Breeze(2,0).
+-Glitter(2,0).
+HasVisited(3,0).
+-Stench(3,0).
+-Breeze(3,0).
+Glitter(3,0).
+HasVisited(4,0).
+-Stench(4,0).
+-Breeze(4,0).
+-Glitter(4,0).
+HasVisited(4,0).
+-Stench(4,0).
+-Breeze(4,0).
+-Glitter(4,0).
+HasVisited(4,1).
+-Stench(4,1).
+-Breeze(4,1).
+-Glitter(4,1).
+HasVisited(4,2).
+-Stench(4,2).
+-Breeze(4,2).
+Glitter(4,2).
+HasVisited(4,3).
+-Stench(4,3).
+Breeze(4,3).
+-Glitter(4,3).
+CurrentPos(4,3).
+-Stench(4,3).
+Breeze(4,3).
+-(exists x y (CanGoRight(x,y)&$ans(x,y))).
+end_of_list.
+
+-------> sos clausifies to:
+
+list(sos).
+1 [] -distinct([xFirst,xSecond|xRest])|xFirst!=xSecond.
+2 [] -distinct([xFirst,xSecond|xRest])|distinct([xFirst|xRest]).
+3 [] -distinct([xFirst,xSecond|xRest])|distinct([xSecond|xRest]).
+4 [] -CurrentPos(x,y)|Stench(x,y)|Breeze(x,y)|CanGoRight(x,y).
+5 [] -CurrentPos(x,y)|Stench(x,y)|Breeze(x,y)|CanGoLeft(x,y).
+6 [] -CurrentPos(x,y)|Stench(x,y)|Breeze(x,y)|CanGoUp(x,y).
+7 [] -CurrentPos(x,y)|Stench(x,y)|Breeze(x,y)|CanGoDown(x,y).
+8 [] -CurrentPos(x,y)|Room(x,y).
+9 [] -CurrentPos(x,y)|HasVisited(x,y).
+10 [] -HasVisited(x,y)|CanGo(x,y).
+11 [] HasVisited(0,0).
+12 [] -Stench(0,0).
+13 [] -Breeze(0,0).
+14 [] -Glitter(0,0).
+15 [] HasVisited(0,1).
+16 [] -Stench(0,1).
+17 [] -Breeze(0,1).
+18 [] -Glitter(0,1).
+19 [] HasVisited(0,2).
+20 [] -Stench(0,2).
+21 [] Breeze(0,2).
+22 [] -Glitter(0,2).
+23 [] HasVisited(0,1).
+24 [] -Stench(0,1).
+25 [] -Breeze(0,1).
+26 [] -Glitter(0,1).
+27 [] HasVisited(1,1).
+28 [] -Stench(1,1).
+29 [] Breeze(1,1).
+30 [] -Glitter(1,1).
+31 [] HasVisited(0,1).
+32 [] -Stench(0,1).
+33 [] -Breeze(0,1).
+34 [] -Glitter(0,1).
+35 [] HasVisited(0,0).
+36 [] -Stench(0,0).
+37 [] -Breeze(0,0).
+38 [] -Glitter(0,0).
+39 [] HasVisited(1,0).
+40 [] -Stench(1,0).
+41 [] -Breeze(1,0).
+42 [] -Glitter(1,0).
+43 [] HasVisited(2,0).
+44 [] -Stench(2,0).
+45 [] -Breeze(2,0).
+46 [] -Glitter(2,0).
+47 [] HasVisited(3,0).
+48 [] -Stench(3,0).
+49 [] -Breeze(3,0).
+50 [] Glitter(3,0).
+51 [] HasVisited(4,0).
+52 [] -Stench(4,0).
+53 [] -Breeze(4,0).
+54 [] -Glitter(4,0).
+55 [] HasVisited(4,0).
+56 [] -Stench(4,0).
+57 [] -Breeze(4,0).
+58 [] -Glitter(4,0).
+59 [] HasVisited(4,1).
+60 [] -Stench(4,1).
+61 [] -Breeze(4,1).
+62 [] -Glitter(4,1).
+63 [] HasVisited(4,2).
+64 [] -Stench(4,2).
+65 [] -Breeze(4,2).
+66 [] Glitter(4,2).
+67 [] HasVisited(4,3).
+68 [] -Stench(4,3).
+69 [] Breeze(4,3).
+70 [] -Glitter(4,3).
+71 [] CurrentPos(4,3).
+72 [] -Stench(4,3).
+73 [] Breeze(4,3).
+74 [] -CanGoRight(x,y)| -$ans(x,y).
+end_of_list.
+
+======= end of input processing =======
+
+=========== start of search ===========
+
+given clause #1: (wt=3) 11 [] HasVisited(0,0).
+
+given clause #2: (wt=3) 12 [] -Stench(0,0).
+
+given clause #3: (wt=3) 13 [] -Breeze(0,0).
+
+given clause #4: (wt=3) 14 [] -Glitter(0,0).
+
+given clause #5: (wt=3) 15 [] HasVisited(0,1).
+
+given clause #6: (wt=3) 16 [] -Stench(0,1).
+
+given clause #7: (wt=3) 17 [] -Breeze(0,1).
+
+given clause #8: (wt=3) 18 [] -Glitter(0,1).
+
+given clause #9: (wt=3) 19 [] HasVisited(0,2).
+
+given clause #10: (wt=3) 20 [] -Stench(0,2).
+
+given clause #11: (wt=3) 21 [] Breeze(0,2).
+
+given clause #12: (wt=3) 22 [] -Glitter(0,2).
+
+given clause #13: (wt=3) 23 [] HasVisited(0,1).
+
+given clause #14: (wt=3) 24 [] -Stench(0,1).
+
+given clause #15: (wt=3) 25 [] -Breeze(0,1).
+
+given clause #16: (wt=3) 26 [] -Glitter(0,1).
+
+given clause #17: (wt=3) 27 [] HasVisited(1,1).
+
+given clause #18: (wt=3) 28 [] -Stench(1,1).
+
+given clause #19: (wt=3) 29 [] Breeze(1,1).
+
+given clause #20: (wt=3) 30 [] -Glitter(1,1).
+
+given clause #21: (wt=3) 31 [] HasVisited(0,1).
+
+given clause #22: (wt=3) 32 [] -Stench(0,1).
+
+given clause #23: (wt=3) 33 [] -Breeze(0,1).
+
+given clause #24: (wt=3) 34 [] -Glitter(0,1).
+
+given clause #25: (wt=3) 35 [] HasVisited(0,0).
+
+given clause #26: (wt=3) 36 [] -Stench(0,0).
+
+given clause #27: (wt=3) 37 [] -Breeze(0,0).
+
+given clause #28: (wt=3) 38 [] -Glitter(0,0).
+
+given clause #29: (wt=3) 39 [] HasVisited(1,0).
+
+given clause #30: (wt=3) 40 [] -Stench(1,0).
+
+given clause #31: (wt=3) 41 [] -Breeze(1,0).
+
+given clause #32: (wt=3) 42 [] -Glitter(1,0).
+
+given clause #33: (wt=3) 43 [] HasVisited(2,0).
+
+given clause #34: (wt=3) 44 [] -Stench(2,0).
+
+given clause #35: (wt=3) 45 [] -Breeze(2,0).
+
+given clause #36: (wt=3) 46 [] -Glitter(2,0).
+
+given clause #37: (wt=3) 47 [] HasVisited(3,0).
+
+given clause #38: (wt=3) 48 [] -Stench(3,0).
+
+given clause #39: (wt=3) 49 [] -Breeze(3,0).
+
+given clause #40: (wt=3) 50 [] Glitter(3,0).
+
+given clause #41: (wt=3) 51 [] HasVisited(4,0).
+
+given clause #42: (wt=3) 52 [] -Stench(4,0).
+
+given clause #43: (wt=3) 53 [] -Breeze(4,0).
+
+given clause #44: (wt=3) 54 [] -Glitter(4,0).
+
+given clause #45: (wt=3) 55 [] HasVisited(4,0).
+
+given clause #46: (wt=3) 56 [] -Stench(4,0).
+
+given clause #47: (wt=3) 57 [] -Breeze(4,0).
+
+given clause #48: (wt=3) 58 [] -Glitter(4,0).
+
+given clause #49: (wt=3) 59 [] HasVisited(4,1).
+
+given clause #50: (wt=3) 60 [] -Stench(4,1).
+
+given clause #51: (wt=3) 61 [] -Breeze(4,1).
+
+given clause #52: (wt=3) 62 [] -Glitter(4,1).
+
+given clause #53: (wt=3) 63 [] HasVisited(4,2).
+
+given clause #54: (wt=3) 64 [] -Stench(4,2).
+
+given clause #55: (wt=3) 65 [] -Breeze(4,2).
+
+given clause #56: (wt=3) 66 [] Glitter(4,2).
+
+given clause #57: (wt=3) 67 [] HasVisited(4,3).
+
+given clause #58: (wt=3) 68 [] -Stench(4,3).
+
+given clause #59: (wt=3) 69 [] Breeze(4,3).
+
+given clause #60: (wt=3) 70 [] -Glitter(4,3).
+
+given clause #61: (wt=3) 71 [] CurrentPos(4,3).
+
+given clause #62: (wt=3) 72 [] -Stench(4,3).
+
+given clause #63: (wt=3) 73 [] Breeze(4,3).
+
+given clause #64: (wt=3) 74 [] -CanGoRight(x,y)| -$ans(x,y).
+
+given clause #65: (wt=6) 8 [] -CurrentPos(x,y)|Room(x,y).
+
+given clause #66: (wt=3) 75 [binary,8.1,71.1] Room(4,3).
+
+given clause #67: (wt=6) 9 [] -CurrentPos(x,y)|HasVisited(x,y).
+
+given clause #68: (wt=6) 10 [] -HasVisited(x,y)|CanGo(x,y).
+
+given clause #69: (wt=3) 76 [binary,10.1,67.1] CanGo(4,3).
+
+given clause #70: (wt=3) 77 [binary,10.1,63.1] CanGo(4,2).
+
+given clause #71: (wt=3) 78 [binary,10.1,59.1] CanGo(4,1).
+
+given clause #72: (wt=3) 79 [binary,10.1,55.1] CanGo(4,0).
+
+given clause #73: (wt=3) 80 [binary,10.1,47.1] CanGo(3,0).
+
+given clause #74: (wt=3) 81 [binary,10.1,43.1] CanGo(2,0).
+
+given clause #75: (wt=3) 82 [binary,10.1,39.1] CanGo(1,0).
+
+given clause #76: (wt=3) 83 [binary,10.1,35.1] CanGo(0,0).
+
+given clause #77: (wt=3) 84 [binary,10.1,31.1] CanGo(0,1).
+
+given clause #78: (wt=3) 85 [binary,10.1,27.1] CanGo(1,1).
+
+given clause #79: (wt=3) 86 [binary,10.1,19.1] CanGo(0,2).
+
+given clause #80: (wt=6) 87 [binary,10.1,9.2] CanGo(x,y)| -CurrentPos(x,y).
+
+given clause #81: (wt=9) 1 [] -distinct([xFirst,xSecond|xRest])|xFirst!=xSecond.
+
+given clause #82: (wt=10) 2 [] -distinct([xFirst,xSecond|xRest])|distinct([xFirst|xRest]).
+
+given clause #83: (wt=10) 3 [] -distinct([xFirst,xSecond|xRest])|distinct([xSecond|xRest]).
+
+given clause #84: (wt=11) 89 [binary,2.2,1.1] -distinct([x,y,z|u])|x!=z.
+
+given clause #85: (wt=11) 92 [binary,3.2,1.1] -distinct([x,y,z|u])|y!=z.
+
+given clause #86: (wt=12) 4 [] -CurrentPos(x,y)|Stench(x,y)|Breeze(x,y)|CanGoRight(x,y).
+
+given clause #87: (wt=3) 96 [binary,4.2,64.1,unit_del,65,74] -CurrentPos(4,2)| -$ans(4,2).
+
+given clause #88: (wt=3) 97 [binary,4.2,60.1,unit_del,61,74] -CurrentPos(4,1)| -$ans(4,1).
+
+given clause #89: (wt=3) 98 [binary,4.2,56.1,unit_del,57,74] -CurrentPos(4,0)| -$ans(4,0).
+
+given clause #90: (wt=3) 99 [binary,4.2,48.1,unit_del,49,74] -CurrentPos(3,0)| -$ans(3,0).
+
+given clause #91: (wt=3) 100 [binary,4.2,44.1,unit_del,45,74] -CurrentPos(2,0)| -$ans(2,0).
+
+given clause #92: (wt=3) 101 [binary,4.2,40.1,unit_del,41,74] -CurrentPos(1,0)| -$ans(1,0).
+
+given clause #93: (wt=3) 102 [binary,4.2,36.1,unit_del,37,74] -CurrentPos(0,0)| -$ans(0,0).
+
+given clause #94: (wt=3) 103 [binary,4.2,32.1,unit_del,33,74] -CurrentPos(0,1)| -$ans(0,1).
+
+given clause #95: (wt=9) 104 [binary,4.4,74.1] -CurrentPos(x,y)|Stench(x,y)|Breeze(x,y)| -$ans(x,y).
+
+given clause #96: (wt=12) 88 [binary,2.1,2.2] distinct([x|y])| -distinct([x,z,u|y]).
+
+given clause #97: (wt=12) 90 [binary,3.1,3.2] distinct([x|y])| -distinct([z,u,x|y]).
+
+given clause #98: (wt=12) 91 [binary,3.2,2.1] -distinct([x,y,z|u])|distinct([y|u]).
+
+given clause #99: (wt=13) 93 [binary,89.1,3.2] x!=y| -distinct([z,x,u,y|v]).
+
+given clause #100: (wt=13) 94 [binary,89.1,2.2] x!=y| -distinct([x,z,u,y|v]).
+
+given clause #101: (wt=13) 95 [binary,92.1,3.2] x!=y| -distinct([z,u,x,y|v]).
+
+given clause #102: (wt=14) 108 [binary,88.1,3.1] -distinct([x,y,z,u|v])|distinct([u|v]).
+
+given clause #103: (wt=14) 109 [binary,88.1,2.1] -distinct([x,y,z,u|v])|distinct([x|v]).
+
+given clause #104: (wt=14) 110 [binary,88.2,3.2] distinct([x|y])| -distinct([z,x,u,v|y]).
+
+given clause #105: (wt=14) 114 [binary,90.1,2.1] -distinct([x,y,z,u|v])|distinct([z|v]).
+
+given clause #106: (wt=15) 105 [binary,88.1,92.1] -distinct([x,y,z,u,v|w])|u!=v.
+
+given clause #107: (wt=15) 106 [binary,88.1,89.1] -distinct([x,y,z,u,v|w])|x!=v.
+
+given clause #108: (wt=15) 112 [binary,90.1,89.1] -distinct([x,y,z,u,v|w])|z!=v.
+
+given clause #109: (wt=15) 116 [binary,91.2,89.1] -distinct([x,y,z,u,v|w])|y!=v.
+
+given clause #110: (wt=16) 107 [binary,88.1,88.2] -distinct([x,y,z,u,v|w])|distinct([x|w]).
+
+given clause #111: (wt=16) 111 [binary,90.1,90.2] -distinct([x,y,z,u,v|w])|distinct([v|w]).
+
+given clause #112: (wt=16) 113 [binary,90.1,88.2] -distinct([x,y,z,u,v|w])|distinct([z|w]).
+
+given clause #113: (wt=16) 115 [binary,91.1,91.2] distinct([x|y])| -distinct([z,u,v,x,w|y]).
+
+given clause #114: (wt=16) 117 [binary,91.2,88.2] -distinct([x,y,z,u,v|w])|distinct([y|w]).
+
+given clause #115: (wt=17) 118 [binary,93.2,91.2] x!=y| -distinct([z,u,v,x,w,y|v6]).
+
+given clause #116: (wt=17) 119 [binary,94.2,91.2] x!=y| -distinct([z,x,u,v,w,y|v6]).
+
+given clause #117: (wt=17) 120 [binary,94.2,90.1] x!=y| -distinct([z,u,x,v,w,y|v6]).
+
+given clause #118: (wt=17) 121 [binary,94.2,88.1] x!=y| -distinct([x,z,u,v,w,y|v6]).
+
+given clause #119: (wt=17) 122 [binary,95.2,91.2] x!=y| -distinct([z,u,v,w,x,y|v6]).
+
+given clause #120: (wt=18) 124 [binary,108.1,91.2] distinct([x|y])| -distinct([z,u,v,w,v6,x|y]).
+
+given clause #121: (wt=18) 128 [binary,108.2,91.1] -distinct([x,y,z,u,v,w|v6])|distinct([v|v6]).
+
+given clause #122: (wt=18) 129 [binary,108.2,88.2] -distinct([x,y,z,u,v,w|v6])|distinct([u|v6]).
+
+given clause #123: (wt=18) 132 [binary,109.1,91.2] distinct([x|y])| -distinct([z,x,u,v,w,v6|y]).
+
+given clause #124: (wt=18) 133 [binary,109.1,90.1] distinct([x|y])| -distinct([z,u,x,v,w,v6|y]).
+
+given clause #125: (wt=18) 134 [binary,109.1,88.1] distinct([x|y])| -distinct([x,z,u,v,w,v6|y]).
+
+given clause #126: (wt=19) 125 [binary,108.2,95.2] -distinct([x,y,z,u,v,w,v6|v7])|w!=v6.
+
+given clause #127: (wt=19) 126 [binary,108.2,94.2] -distinct([x,y,z,u,v,w,v6|v7])|u!=v6.
+
+given clause #128: (wt=19) 127 [binary,108.2,93.2] -distinct([x,y,z,u,v,w,v6|v7])|v!=v6.
+
+given clause #129: (wt=19) 135 [binary,109.2,94.2] -distinct([x,y,z,u,v,w,v6|v7])|x!=v6.
+
+given clause #130: (wt=19) 138 [binary,110.1,94.2] -distinct([x,y,z,u,v,w,v6|v7])|y!=v6.
+
+given clause #131: (wt=19) 141 [binary,114.2,94.2] -distinct([x,y,z,u,v,w,v6|v7])|z!=v6.
+
+given clause #132: (wt=20) 123 [binary,108.1,108.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,x|y]).
+
+given clause #133: (wt=20) 130 [binary,109.1,109.2] distinct([x|y])| -distinct([x,z,u,v,w,v6,v7|y]).
+
+given clause #134: (wt=20) 131 [binary,109.1,108.2] distinct([x|y])| -distinct([z,u,v,x,w,v6,v7|y]).
+
+given clause #135: (wt=20) 136 [binary,110.1,110.2] -distinct([x,y,z,u,v,w,v6|v7])|distinct([v|v7]).
+
+given clause #136: (wt=20) 137 [binary,110.1,109.1] -distinct([x,y,z,u,v,w,v6|v7])|distinct([y|v7]).
+
+given clause #137: (wt=20) 139 [binary,114.1,114.2] distinct([x|y])| -distinct([z,u,v,w,v6,x,v7|y]).
+
+given clause #138: (wt=20) 140 [binary,114.2,109.1] -distinct([x,y,z,u,v,w,v6|v7])|distinct([z|v7]).
+
+given clause #139: (wt=21) 142 [binary,105.1,114.2] x!=y| -distinct([z,u,v,w,v6,v7,x,y|v8]).
+
+given clause #140: (wt=21) 143 [binary,106.1,114.2] x!=y| -distinct([z,u,x,v,w,v6,v7,y|v8]).
+
+given clause #141: (wt=21) 144 [binary,106.1,110.1] x!=y| -distinct([z,x,u,v,w,v6,v7,y|v8]).
+
+given clause #142: (wt=21) 145 [binary,106.1,109.2] x!=y| -distinct([x,z,u,v,w,v6,v7,y|v8]).
+
+given clause #143: (wt=21) 146 [binary,106.1,108.2] x!=y| -distinct([z,u,v,x,w,v6,v7,y|v8]).
+
+given clause #144: (wt=21) 147 [binary,112.1,114.2] x!=y| -distinct([z,u,v,w,v6,x,v7,y|v8]).
+
+given clause #145: (wt=21) 148 [binary,116.1,114.2] x!=y| -distinct([z,u,v,w,x,v6,v7,y|v8]).
+
+given clause #146: (wt=22) 149 [binary,107.1,114.2] distinct([x|y])| -distinct([z,u,x,v,w,v6,v7,v8|y]).
+
+given clause #147: (wt=22) 150 [binary,107.1,110.1] distinct([x|y])| -distinct([z,x,u,v,w,v6,v7,v8|y]).
+
+given clause #148: (wt=22) 151 [binary,107.1,109.2] distinct([x|y])| -distinct([x,z,u,v,w,v6,v7,v8|y]).
+
+given clause #149: (wt=22) 152 [binary,107.1,108.2] distinct([x|y])| -distinct([z,u,v,x,w,v6,v7,v8|y]).
+
+given clause #150: (wt=22) 155 [binary,107.2,114.1] -distinct([x,y,z,u,v,w,v6,v7|v8])|distinct([v6|v8]).
+
+given clause #151: (wt=22) 157 [binary,107.2,110.2] -distinct([x,y,z,u,v,w,v6,v7|v8])|distinct([w|v8]).
+
+given clause #152: (wt=22) 158 [binary,107.2,108.1] -distinct([x,y,z,u,v,w,v6,v7|v8])|distinct([v7|v8]).
+
+given clause #153: (wt=22) 162 [binary,111.2,109.1] -distinct([x,y,z,u,v,w,v6,v7|v8])|distinct([v|v8]).
+
+given clause #154: (wt=23) 154 [binary,107.2,116.1] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|w!=v8.
+
+given clause #155: (wt=23) 156 [binary,107.2,112.1] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|v6!=v8.
+
+given clause #156: (wt=23) 159 [binary,107.2,106.1] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|x!=v8.
+
+given clause #157: (wt=23) 160 [binary,107.2,105.1] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|v7!=v8.
+
+given clause #158: (wt=23) 164 [binary,111.2,106.1] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|v!=v8.
+
+given clause #159: (wt=23) 167 [binary,113.2,106.1] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|z!=v8.
+
+given clause #160: (wt=23) 170 [binary,115.1,106.1] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|u!=v8.
+
+given clause #161: (wt=23) 173 [binary,117.2,106.1] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|y!=v8.
+
+given clause #162: (wt=24) 153 [binary,107.1,107.2] distinct([x|y])| -distinct([x,z,u,v,w,v6,v7,v8,v9|y]).
+
+given clause #163: (wt=24) 161 [binary,111.1,111.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,v8,v9,x|y]).
+
+given clause #164: (wt=24) 163 [binary,111.2,107.1] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|distinct([v|v9]).
+
+given clause #165: (wt=24) 165 [binary,113.1,113.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,x,v8,v9|y]).
+
+given clause #166: (wt=24) 166 [binary,113.2,107.1] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|distinct([z|v9]).
+
+given clause #167: (wt=24) 168 [binary,115.1,115.2] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|distinct([v7|v9]).
+
+given clause #168: (wt=24) 169 [binary,115.1,107.1] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|distinct([u|v9]).
+
+given clause #169: (wt=24) 171 [binary,117.1,117.2] distinct([x|y])| -distinct([z,u,v,w,v6,x,v7,v8,v9|y]).
+
+given clause #170: (wt=24) 172 [binary,117.2,107.1] -distinct([x,y,z,u,v,w,v6,v7,v8|v9])|distinct([y|v9]).
+
+given clause #171: (wt=25) 174 [binary,118.2,117.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,x,v9,y|v10]).
+
+given clause #172: (wt=25) 175 [binary,119.2,117.2] x!=y| -distinct([z,u,v,w,v6,x,v7,v8,v9,y|v10]).
+
+given clause #173: (wt=25) 176 [binary,120.2,117.2] x!=y| -distinct([z,u,v,w,v6,v7,x,v8,v9,y|v10]).
+
+given clause #174: (wt=25) 177 [binary,121.2,117.2] x!=y| -distinct([z,x,u,v,w,v6,v7,v8,v9,y|v10]).
+
+given clause #175: (wt=25) 178 [binary,121.2,115.1] x!=y| -distinct([z,u,v,x,w,v6,v7,v8,v9,y|v10]).
+
+given clause #176: (wt=25) 179 [binary,121.2,113.2] x!=y| -distinct([z,u,x,v,w,v6,v7,v8,v9,y|v10]).
+
+given clause #177: (wt=25) 180 [binary,121.2,111.2] x!=y| -distinct([z,u,v,w,x,v6,v7,v8,v9,y|v10]).
+
+given clause #178: (wt=25) 181 [binary,121.2,107.2] x!=y| -distinct([x,z,u,v,w,v6,v7,v8,v9,y|v10]).
+
+given clause #179: (wt=25) 182 [binary,122.2,117.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,x,y|v10]).
+
+given clause #180: (wt=26) 189 [binary,124.1,117.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9|v10])|distinct([v6|v10]).
+
+given clause #181: (wt=26) 190 [binary,124.1,115.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9|v10])|distinct([v8|v10]).
+
+given clause #182: (wt=26) 191 [binary,124.1,113.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9|v10])|distinct([v7|v10]).
+
+given clause #183: (wt=26) 192 [binary,124.1,111.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9|v10])|distinct([v9|v10]).
+
+given clause #184: (wt=26) 193 [binary,124.1,107.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9|v10])|distinct([w|v10]).
+
+given clause #185: (wt=26) 196 [binary,128.2,107.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9|v10])|distinct([v|v10]).
+
+given clause #186: (wt=26) 199 [binary,129.2,107.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9|v10])|distinct([u|v10]).
+
+given clause #187: (wt=26) 202 [binary,132.1,107.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9|v10])|distinct([y|v10]).
+
+given clause #188: (wt=26) 205 [binary,133.1,107.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9|v10])|distinct([z|v10]).
+
+given clause #189: (wt=26) 208 [binary,134.1,107.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9|v10])|distinct([x|v10]).
+
+given clause #190: (wt=27) 184 [binary,124.1,122.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|v9!=v10.
+
+given clause #191: (wt=27) 185 [binary,124.1,121.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|w!=v10.
+
+given clause #192: (wt=27) 186 [binary,124.1,120.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|v7!=v10.
+
+given clause #193: (wt=27) 187 [binary,124.1,119.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|v6!=v10.
+
+given clause #194: (wt=27) 188 [binary,124.1,118.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|v8!=v10.
+
+given clause #195: (wt=27) 195 [binary,128.2,121.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|v!=v10.
+
+given clause #196: (wt=27) 198 [binary,129.2,121.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|u!=v10.
+
+given clause #197: (wt=27) 201 [binary,132.1,121.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|y!=v10.
+
+given clause #198: (wt=27) 204 [binary,133.1,121.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|z!=v10.
+
+given clause #199: (wt=27) 207 [binary,134.1,121.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|x!=v10.
+
+given clause #200: (wt=28) 183 [binary,124.1,124.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|distinct([v10|v11]).
+
+given clause #201: (wt=28) 194 [binary,128.1,128.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,v8,v9,v10,x,v11|y]).
+
+given clause #202: (wt=28) 197 [binary,129.1,129.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,v8,v9,x,v10,v11|y]).
+
+given clause #203: (wt=28) 200 [binary,132.1,132.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|distinct([v6|v11]).
+
+given clause #204: (wt=28) 203 [binary,133.1,133.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|distinct([v7|v11]).
+
+given clause #205: (wt=28) 206 [binary,134.1,134.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10|v11])|distinct([x|v11]).
+
+given clause #206: (wt=28) 209 [binary,134.2,133.1] distinct([x|y])| -distinct([z,u,x,v,w,v6,v7,v8,v9,v10,v11|y]).
+
+given clause #207: (wt=28) 210 [binary,134.2,132.1] distinct([x|y])| -distinct([z,x,u,v,w,v6,v7,v8,v9,v10,v11|y]).
+
+given clause #208: (wt=28) 211 [binary,134.2,129.2] distinct([x|y])| -distinct([z,u,v,x,w,v6,v7,v8,v9,v10,v11|y]).
+
+given clause #209: (wt=28) 212 [binary,134.2,128.2] distinct([x|y])| -distinct([z,u,v,w,x,v6,v7,v8,v9,v10,v11|y]).
+
+given clause #210: (wt=28) 213 [binary,134.2,124.1] distinct([x|y])| -distinct([z,u,v,w,v6,x,v7,v8,v9,v10,v11|y]).
+
+given clause #211: (wt=29) 214 [binary,125.1,134.1] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,x,y|v12]).
+
+given clause #212: (wt=29) 215 [binary,126.1,134.1] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,x,v10,v11,y|v12]).
+
+given clause #213: (wt=29) 216 [binary,127.1,134.1] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,v10,x,v11,y|v12]).
+
+given clause #214: (wt=29) 217 [binary,135.1,134.1] x!=y| -distinct([x,z,u,v,w,v6,v7,v8,v9,v10,v11,y|v12]).
+
+given clause #215: (wt=29) 218 [binary,135.1,133.1] x!=y| -distinct([z,u,x,v,w,v6,v7,v8,v9,v10,v11,y|v12]).
+
+given clause #216: (wt=29) 219 [binary,135.1,132.1] x!=y| -distinct([z,x,u,v,w,v6,v7,v8,v9,v10,v11,y|v12]).
+
+given clause #217: (wt=29) 220 [binary,135.1,129.2] x!=y| -distinct([z,u,v,x,w,v6,v7,v8,v9,v10,v11,y|v12]).
+
+given clause #218: (wt=29) 221 [binary,135.1,128.2] x!=y| -distinct([z,u,v,w,x,v6,v7,v8,v9,v10,v11,y|v12]).
+
+given clause #219: (wt=29) 222 [binary,135.1,124.1] x!=y| -distinct([z,u,v,w,v6,x,v7,v8,v9,v10,v11,y|v12]).
+
+given clause #220: (wt=29) 223 [binary,138.1,134.1] x!=y| -distinct([z,u,v,w,v6,v7,x,v8,v9,v10,v11,y|v12]).
+
+given clause #221: (wt=29) 224 [binary,141.1,134.1] x!=y| -distinct([z,u,v,w,v6,v7,v8,x,v9,v10,v11,y|v12]).
+
+given clause #222: (wt=30) 228 [binary,123.1,134.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11|v12])|distinct([v6|v12]).
+
+given clause #223: (wt=30) 229 [binary,123.1,133.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11|v12])|distinct([v8|v12]).
+
+given clause #224: (wt=30) 230 [binary,123.1,132.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11|v12])|distinct([v7|v12]).
+
+given clause #225: (wt=30) 231 [binary,123.1,129.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11|v12])|distinct([v9|v12]).
+
+given clause #226: (wt=30) 232 [binary,123.1,128.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11|v12])|distinct([v10|v12]).
+
+given clause #227: (wt=30) 236 [binary,123.1,124.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11|v12])|distinct([v11|v12]).
+
+given clause #228: (wt=30) 239 [binary,130.1,134.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11|v12])|distinct([x|v12]).
+
+given clause #229: (wt=30) 241 [binary,130.2,133.1] distinct([x|y])| -distinct([z,u,x,v,w,v6,v7,v8,v9,v10,v11,v12|y]).
+
+given clause #230: (wt=30) 242 [binary,130.2,132.1] distinct([x|y])| -distinct([z,x,u,v,w,v6,v7,v8,v9,v10,v11,v12|y]).
+
+given clause #231: (wt=30) 243 [binary,130.2,129.2] distinct([x|y])| -distinct([z,u,v,x,w,v6,v7,v8,v9,v10,v11,v12|y]).
+
+given clause #232: (wt=30) 244 [binary,130.2,128.2] distinct([x|y])| -distinct([z,u,v,w,x,v6,v7,v8,v9,v10,v11,v12|y]).
+
+given clause #233: (wt=30) 245 [binary,130.2,124.1] distinct([x|y])| -distinct([z,u,v,w,v6,x,v7,v8,v9,v10,v11,v12|y]).
+
+given clause #234: (wt=31) 225 [binary,123.1,141.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|v8!=v12.
+
+given clause #235: (wt=31) 226 [binary,123.1,138.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|v7!=v12.
+
+given clause #236: (wt=31) 227 [binary,123.1,135.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|v6!=v12.
+
+given clause #237: (wt=31) 233 [binary,123.1,127.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|v10!=v12.
+
+given clause #238: (wt=31) 234 [binary,123.1,126.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|v9!=v12.
+
+given clause #239: (wt=31) 235 [binary,123.1,125.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|v11!=v12.
+
+given clause #240: (wt=31) 238 [binary,130.1,135.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|x!=v12.
+
+given clause #241: (wt=31) 247 [binary,131.1,135.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|u!=v12.
+
+given clause #242: (wt=31) 251 [binary,136.2,135.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|v!=v12.
+
+given clause #243: (wt=31) 254 [binary,137.2,135.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|y!=v12.
+
+given clause #244: (wt=31) 257 [binary,139.1,135.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|w!=v12.
+
+given clause #245: (wt=31) 260 [binary,140.2,135.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|z!=v12.
+
+given clause #246: (wt=32) 237 [binary,123.1,123.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|distinct([v12|v13]).
+
+given clause #247: (wt=32) 240 [binary,130.1,130.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|distinct([x|v13]).
+
+given clause #248: (wt=32) 246 [binary,130.2,123.1] distinct([x|y])| -distinct([z,u,v,w,v6,v7,x,v8,v9,v10,v11,v12,v13|y]).
+
+given clause #249: (wt=32) 248 [binary,131.1,131.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|distinct([v9|v13]).
+
+given clause #250: (wt=32) 249 [binary,131.1,130.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|distinct([u|v13]).
+
+given clause #251: (wt=32) 250 [binary,136.1,136.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,x,v12,v13|y]).
+
+given clause #252: (wt=32) 252 [binary,136.2,130.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|distinct([v|v13]).
+
+given clause #253: (wt=32) 253 [binary,137.1,137.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,v8,x,v9,v10,v11,v12,v13|y]).
+
+given clause #254: (wt=32) 255 [binary,137.2,130.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|distinct([y|v13]).
+
+given clause #255: (wt=32) 256 [binary,139.1,139.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|distinct([v11|v13]).
+
+given clause #256: (wt=32) 258 [binary,139.1,130.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|distinct([w|v13]).
+
+given clause #257: (wt=32) 259 [binary,140.1,140.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,v8,v9,x,v10,v11,v12,v13|y]).
+
+given clause #258: (wt=32) 261 [binary,140.2,130.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12|v13])|distinct([z|v13]).
+
+given clause #259: (wt=33) 262 [binary,142.2,140.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,x,y|v14]).
+
+given clause #260: (wt=33) 263 [binary,143.2,140.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,x,v10,v11,v12,v13,y|v14]).
+
+given clause #261: (wt=33) 264 [binary,144.2,140.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,x,v9,v10,v11,v12,v13,y|v14]).
+
+given clause #262: (wt=33) 265 [binary,145.2,140.2] x!=y| -distinct([z,u,x,v,w,v6,v7,v8,v9,v10,v11,v12,v13,y|v14]).
+
+given clause #263: (wt=33) 266 [binary,145.2,139.1] x!=y| -distinct([z,u,v,w,v6,x,v7,v8,v9,v10,v11,v12,v13,y|v14]).
+
+given clause #264: (wt=33) 267 [binary,145.2,137.2] x!=y| -distinct([z,x,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,y|v14]).
+
+given clause #265: (wt=33) 268 [binary,145.2,136.2] x!=y| -distinct([z,u,v,w,x,v6,v7,v8,v9,v10,v11,v12,v13,y|v14]).
+
+given clause #266: (wt=33) 269 [binary,145.2,131.1] x!=y| -distinct([z,u,v,x,w,v6,v7,v8,v9,v10,v11,v12,v13,y|v14]).
+
+given clause #267: (wt=33) 270 [binary,145.2,130.1] x!=y| -distinct([x,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,y|v14]).
+
+given clause #268: (wt=33) 271 [binary,145.2,123.1] x!=y| -distinct([z,u,v,w,v6,v7,x,v8,v9,v10,v11,v12,v13,y|v14]).
+
+given clause #269: (wt=33) 272 [binary,146.2,140.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,v10,x,v11,v12,v13,y|v14]).
+
+given clause #270: (wt=33) 273 [binary,147.2,140.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,v12,x,v13,y|v14]).
+
+given clause #271: (wt=33) 274 [binary,148.2,140.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,x,v12,v13,y|v14]).
+
+given clause #272: (wt=34) 283 [binary,149.1,140.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13|v14])|distinct([v9|v14]).
+
+given clause #273: (wt=34) 284 [binary,149.1,139.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13|v14])|distinct([v12|v14]).
+
+given clause #274: (wt=34) 285 [binary,149.1,137.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13|v14])|distinct([v8|v14]).
+
+given clause #275: (wt=34) 286 [binary,149.1,136.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13|v14])|distinct([v11|v14]).
+
+given clause #276: (wt=34) 287 [binary,149.1,131.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13|v14])|distinct([v10|v14]).
+
+given clause #277: (wt=34) 288 [binary,149.1,130.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13|v14])|distinct([z|v14]).
+
+given clause #278: (wt=34) 289 [binary,149.1,123.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13|v14])|distinct([v13|v14]).
+
+given clause #279: (wt=34) 292 [binary,150.1,130.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13|v14])|distinct([y|v14]).
+
+given clause #280: (wt=34) 293 [binary,150.2,140.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,v8,x,v9,v10,v11,v12,v13,v14|y]).
+
+given clause #281: (wt=34) 296 [binary,151.1,130.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13|v14])|distinct([x|v14]).
+
+given clause #282: (wt=34) 299 [binary,151.2,139.1] distinct([x|y])| -distinct([z,u,v,w,v6,x,v7,v8,v9,v10,v11,v12,v13,v14|y]).
+
+given clause #283: (wt=34) 300 [binary,151.2,136.2] distinct([x|y])| -distinct([z,u,v,w,x,v6,v7,v8,v9,v10,v11,v12,v13,v14|y]).
+
+given clause #284: (wt=34) 301 [binary,151.2,131.1] distinct([x|y])| -distinct([z,u,v,x,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|y]).
+
+given clause #285: (wt=34) 302 [binary,151.2,123.1] distinct([x|y])| -distinct([z,u,v,w,v6,v7,x,v8,v9,v10,v11,v12,v13,v14|y]).
+
+given clause #286: (wt=35) 276 [binary,149.1,148.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|v11!=v14.
+
+given clause #287: (wt=35) 277 [binary,149.1,147.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|v12!=v14.
+
+given clause #288: (wt=35) 278 [binary,149.1,146.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|v10!=v14.
+
+given clause #289: (wt=35) 279 [binary,149.1,145.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|z!=v14.
+
+given clause #290: (wt=35) 280 [binary,149.1,144.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|v8!=v14.
+
+given clause #291: (wt=35) 281 [binary,149.1,143.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|v9!=v14.
+
+given clause #292: (wt=35) 282 [binary,149.1,142.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|v13!=v14.
+
+given clause #293: (wt=35) 291 [binary,150.1,145.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|y!=v14.
+
+given clause #294: (wt=35) 295 [binary,151.1,145.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|x!=v14.
+
+given clause #295: (wt=35) 305 [binary,152.1,145.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|u!=v14.
+
+given clause #296: (wt=35) 308 [binary,155.2,145.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|v6!=v14.
+
+given clause #297: (wt=35) 311 [binary,157.2,145.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|w!=v14.
+
+given clause #298: (wt=35) 314 [binary,158.2,145.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|v7!=v14.
+
+given clause #299: (wt=35) 317 [binary,162.2,145.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|v!=v14.
+
+given clause #300: (wt=36) 275 [binary,149.1,149.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|distinct([v9|v15]).
+
+given clause #301: (wt=36) 290 [binary,150.1,150.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|distinct([v8|v15]).
+
+given clause #302: (wt=36) 294 [binary,151.1,151.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|distinct([x|v15]).
+
+given clause #303: (wt=36) 297 [binary,151.2,150.1] distinct([x|y])| -distinct([z,x,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15|y]).
+
+given clause #304: (wt=36) 298 [binary,151.2,149.1] distinct([x|y])| -distinct([z,u,x,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15|y]).
+
+given clause #305: (wt=36) 303 [binary,152.1,152.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|distinct([v10|v15]).
+
+given clause #306: (wt=36) 304 [binary,152.1,151.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|distinct([u|v15]).
+
+given clause #307: (wt=36) 306 [binary,155.1,155.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14,x,v15|y]).
+
+given clause #308: (wt=36) 307 [binary,155.2,151.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|distinct([v6|v15]).
+
+given clause #309: (wt=36) 309 [binary,157.1,157.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,x,v14,v15|y]).
+
+given clause #310: (wt=36) 310 [binary,157.2,151.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|distinct([w|v15]).
+
+given clause #311: (wt=36) 312 [binary,158.1,158.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,x|y]).
+
+given clause #312: (wt=36) 313 [binary,158.2,151.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|distinct([v7|v15]).
+
+given clause #313: (wt=36) 315 [binary,162.1,162.2] distinct([x|y])| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,v12,x,v13,v14,v15|y]).
+
+given clause #314: (wt=36) 316 [binary,162.2,151.2] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14|v15])|distinct([v|v15]).
+
+given clause #315: (wt=37) 318 [binary,154.1,162.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,x,v14,v15,y|v16]).
+
+given clause #316: (wt=37) 319 [binary,156.1,162.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14,x,v15,y|v16]).
+
+given clause #317: (wt=37) 320 [binary,159.1,162.2] x!=y| -distinct([z,u,v,w,x,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,y|v16]).
+
+given clause #318: (wt=37) 321 [binary,159.1,158.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,x,v9,v10,v11,v12,v13,v14,v15,y|v16]).
+
+given clause #319: (wt=37) 322 [binary,159.1,157.2] x!=y| -distinct([z,u,v,w,v6,x,v7,v8,v9,v10,v11,v12,v13,v14,v15,y|v16]).
+
+given clause #320: (wt=37) 323 [binary,159.1,155.2] x!=y| -distinct([z,u,v,w,v6,v7,x,v8,v9,v10,v11,v12,v13,v14,v15,y|v16]).
+
+given clause #321: (wt=37) 324 [binary,159.1,152.1] x!=y| -distinct([z,u,v,x,w,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,y|v16]).
+
+given clause #322: (wt=37) 325 [binary,159.1,151.1] x!=y| -distinct([x,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,y|v16]).
+
+given clause #323: (wt=37) 326 [binary,159.1,150.1] x!=y| -distinct([z,x,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,y|v16]).
+
+given clause #324: (wt=37) 327 [binary,159.1,149.1] x!=y| -distinct([z,u,x,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,y|v16]).
+
+given clause #325: (wt=37) 328 [binary,160.1,162.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,x,y|v16]).
+
+given clause #326: (wt=37) 329 [binary,164.1,162.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,v12,x,v13,v14,v15,y|v16]).
+
+given clause #327: (wt=37) 330 [binary,167.1,162.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,v10,x,v11,v12,v13,v14,v15,y|v16]).
+
+given clause #328: (wt=37) 331 [binary,170.1,162.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,v10,v11,x,v12,v13,v14,v15,y|v16]).
+
+given clause #329: (wt=37) 332 [binary,173.1,162.2] x!=y| -distinct([z,u,v,w,v6,v7,v8,v9,x,v10,v11,v12,v13,v14,v15,y|v16]).
+
+given clause #330: (wt=38) 337 [binary,153.1,162.1] -distinct([x,y,z,u,v,w,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15|v16])|distinct([v12|v16]).
+
+Search stopped by max_seconds option.
+
+============ end of search ============
+
+-------------- statistics -------------
+clauses given                330
+clauses generated          28998
+  binary_res generated     28998
+  factors generated            0
+demod & eval rewrites          0
+clauses wt,lit,sk delete       0
+tautologies deleted            0
+clauses forward subsumed   28079
+  (subsumed by sos)        28043
+unit deletions                83
+factor simplifications         0
+clauses kept                 919
+new demodulators               0
+empty clauses                  0
+clauses back demodulated       0
+clauses back subsumed          4
+usable size                    0
+sos size                       0
+demodulators size              0
+passive size                   0
+hot size                       0
+Kbytes malloced              926
+
+----------- times (seconds) -----------
+user CPU time          5.12          (0 hr, 0 min, 5 sec)
+system CPU time        0.13          (0 hr, 0 min, 0 sec)
+wall-clock time        5             (0 hr, 0 min, 5 sec)
+input time             0.00
+  clausify time        0.00
+binary_res time        0.15
+pre_process time       4.61
+  renumber time        0.06
+  demod time           0.00
+  order equalities     0.00
+  unit deleletion      1.02
+  factor simplify      0.02
+  weigh cl time        0.00
+  hints keep time      0.00
+  sort lits time       0.00
+  forward subsume      3.44
+  delete cl time       0.03
+  keep cl time         0.02
+    hints time         0.00
+  print_cl time        0.00
+  conflict time        0.00
+  new demod time       0.00
+post_process time      0.30
+  back demod time      0.00
+  back subsume         0.30
+  factor time          0.00
+  unindex time         0.00
+
+The job finished        Tue Dec 14 01:45:24 2010
